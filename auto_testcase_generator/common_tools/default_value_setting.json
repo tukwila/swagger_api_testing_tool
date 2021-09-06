@@ -1,0 +1,28 @@
+{
+  "VARCHAR2":{
+    "parameterRange": [3, 20],
+    "ifNull": true,
+    "validChar": ["uppercase", "lowercase", "."],
+    "caseSensitive": true
+  },
+  "number":{
+    "parameterRange": "[1, 20]",
+    "ifNull": true
+  },
+  "date":{
+    "parameterRange": "[1900-01-01,2999-12-31]",
+    "ifNull": true,
+    "validChar": ["yyyymmdd"]
+  },
+  "enum":{
+    "parameterRange": ["a", "b", "c", "d"],
+    "ifNull": true,
+    "caseSensitive": true
+  },
+  "file":{
+    "parameterRange": [1, 10240],
+    "ifNull": true,
+    "validChar": ["xml", "json"],
+    "caseSensitive": true
+  }
+}

@@ -1,0 +1,1544 @@
+﻿{
+  "/v2/pet": {
+    "put": {
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Pet",
+              "testcases": {
+                "valid_partition": {
+                  "testcase": "Parameter name requestBody is object valid case: parameters in object body are valid",
+                  "testdata": {
+                    "category": {
+                      "id": 2600117687661204041,
+                      "name": "gztbGKAXwyoPqSmQknUu"
+                    },
+                    "id": 9223372036854775807,
+                    "name": "B",
+                    "photoUrls": [
+                      "WOxfLRQGDmJHUE"
+                    ],
+                    "status": "PENDING",
+                    "tags": [
+                      {
+                        "id": -9223372036854775807,
+                        "name": "j.nNh"
+                      }
+                    ]
+                  }
+                },
+                "invalid_partition": {
+                  "testcase": "Parameter name requestBody is object invalid case: parameters in object body are invalid ",
+                  "testdata": {
+                    "category": {
+                      "id": -9223372036854775809,
+                      "name": ""
+                    },
+                    "id": -9223372036854775809,
+                    "name": "UqhXxTvyGtIkrbHZjdPAm",
+                    "photoUrls": [
+                      "\u4e00\u4e8c"
+                    ],
+                    "status": "generator",
+                    "tags": [
+                      {
+                        "id": -9223372036854775809,
+                        "name": ""
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "application/xml": {
+            "schema": {
+              "$ref": "#/components/schemas/Pet"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "OK"
+        },
+        "201": {
+          "description": "Created"
+        },
+        "400": {
+          "description": "Invalid ID supplied"
+        },
+        "401": {
+          "description": "Unauthorized"
+        },
+        "403": {
+          "description": "Forbidden"
+        },
+        "404": {
+          "description": "Pet not found"
+        },
+        "405": {
+          "description": "Validation exception"
+        }
+      }
+    },
+    "post": {
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Pet",
+              "testcases": {
+                "valid_partition": {
+                  "testcase": "Parameter name requestBody is object valid case: parameters in object body are valid",
+                  "testdata": {
+                    "category": {
+                      "id": 9223372036854775808,
+                      "name": "None"
+                    },
+                    "id": 9223372036854775807,
+                    "name": "PElpsxY",
+                    "photoUrls": [
+                      "WOxfLRQGDmJHUE"
+                    ],
+                    "status": "AVAILABLE",
+                    "tags": [
+                      {
+                        "id": "None",
+                        "name": "DhKZTisFajGdCrYEgwQM"
+                      },
+                      {
+                        "id": "None",
+                        "name": "None"
+                      },
+                      {
+                        "id": -9223372036854775808,
+                        "name": "None"
+                      }
+                    ]
+                  }
+                },
+                "invalid_partition": {
+                  "testcase": "Parameter name requestBody is object invalid case: parameters in object body are invalid ",
+                  "testdata": {
+                    "category": {
+                      "id": -9223372036854775809,
+                      "name": "\u516d\u56db"
+                    },
+                    "id": 9223372036854775809,
+                    "name": "None",
+                    "photoUrls": [
+                      "None",
+                      "",
+                      "jFMGciRDmnbZPstVdSHfX",
+                      "731],;6|$%"
+                    ],
+                    "status": "generator",
+                    "tags": [
+                      {
+                        "id": -9223372036854775809,
+                        "name": "\u516b"
+                      },
+                      {
+                        "id": -9223372036854775809,
+                        "name": "@,"
+                      },
+                      {
+                        "id": 9223372036854775809,
+                        "name": "ZBncoOeKbDWSVlygCIuUw"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "application/xml": {
+            "schema": {
+              "$ref": "#/components/schemas/Pet"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "OK"
+        },
+        "201": {
+          "description": "Created"
+        },
+        "401": {
+          "description": "Unauthorized"
+        },
+        "403": {
+          "description": "Forbidden"
+        },
+        "404": {
+          "description": "Not Found"
+        },
+        "405": {
+          "description": "Invalid input"
+        }
+      }
+    }
+  },
+  "/v2/pet/findByStatus": {
+    "get": {
+      "parameters": [
+        {
+          "name": "status",
+          "in": "query",
+          "description": "Status values that need to be considered for filter",
+          "required": true,
+          "style": "form",
+          "explode": true,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "available",
+              "pending",
+              "sold"
+            ]
+          },
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name status location in query style == form explode == True valid case: input any request data within enum range ['available', 'pending', 'sold']",
+              "testdata": [
+                "status=available",
+                "status=available&status=pending&status=sold"
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name status location in query style == form explode == True valid case: input any request data without enum range ['available', 'pending', 'sold']",
+              "testdata": [
+                "status:available&status:pending",
+                "status=",
+                "status=available&status=pending&status=sold&status=sold",
+                "status=available&status=pending&status=sold&status=soldaa"
+              ]
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "successful operation",
+          "content": {
+            "application/xml": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Pet"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Pet"
+                }
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Invalid status value"
+        },
+        "401": {
+          "description": "Unauthorized"
+        },
+        "403": {
+          "description": "Forbidden"
+        },
+        "404": {
+          "description": "Not Found"
+        }
+      }
+    }
+  },
+  "/v2/pet/findByTags": {
+    "get": {
+      "parameters": [
+        {
+          "name": "tags",
+          "in": "query",
+          "description": "Tags to filter by",
+          "required": true,
+          "style": "form",
+          "explode": true,
+          "schema": {
+            "type": "string"
+          },
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name tags valid case: in string length range minimum 1 (include) and maximum 20 (include)",
+              "testdata": [
+                "H",
+                "lJVPhwfFIHUmAXBCSnst",
+                "Cf.r",
+                "NZRtwyDAcaOoKpklQC",
+                "nzrTWYdaCAoOkPKLqc"
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name tags invalid case: out of string valid length range: shorter than minimum 1 or longer than maximum 20",
+              "testdata": [
+                "None",
+                "",
+                "empxudRbUCrTLgzGkhHOS",
+                "?0-97&$,/}_^+",
+                "\u4e00\u4e5d\u56db"
+              ]
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "successful operation",
+          "content": {
+            "application/xml": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Pet"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Pet"
+                }
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Invalid tag value"
+        },
+        "401": {
+          "description": "Unauthorized"
+        },
+        "403": {
+          "description": "Forbidden"
+        },
+        "404": {
+          "description": "Not Found"
+        }
+      }
+    }
+  },
+  "/v2/pet/{petId}": {
+    "get": {
+      "parameters": [
+        {
+          "name": "petId",
+          "in": "path",
+          "description": "ID of pet to return",
+          "required": true,
+          "style": "simple",
+          "schema": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name petId valid case: in parameter value range minimum -9223372036854775808 (include) and maximum 9223372036854775808 (include)",
+              "testdata": [
+                -9223372036854775808,
+                9223372036854775808,
+                -9223372036854775807,
+                9223372036854775807,
+                -2992699586649993566
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name petId invalid case: out of parameter valid range more than maximum (not include) 9223372036854775808 or small than minimum (include) -9223372036854775808",
+              "testdata": [
+                "None",
+                -9223372036854775809,
+                9223372036854775809
+              ]
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "successful operation",
+          "content": {
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Pet"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pet"
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Invalid ID supplied"
+        },
+        "401": {
+          "description": "Unauthorized"
+        },
+        "403": {
+          "description": "Forbidden"
+        },
+        "404": {
+          "description": "Pet not found"
+        }
+      }
+    },
+    "post": {
+      "parameters": [
+        {
+          "name": "petId",
+          "in": "path",
+          "description": "ID of pet that needs to be updated",
+          "required": true,
+          "style": "simple",
+          "schema": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name petId valid case: in parameter value range minimum -9223372036854775808 (include) and maximum 9223372036854775808 (include)",
+              "testdata": [
+                -9223372036854775808,
+                9223372036854775808,
+                -9223372036854775807,
+                9223372036854775807,
+                2149488472466620387
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name petId invalid case: out of parameter valid range more than maximum (not include) 9223372036854775808 or small than minimum (include) -9223372036854775808",
+              "testdata": [
+                "None",
+                -9223372036854775809,
+                9223372036854775809
+              ]
+            }
+          }
+        }
+      ],
+      "requestBody": {
+        "content": {
+          "application/x-www-form-urlencoded": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "name",
+                  "testcases": {
+                    "valid_partition": {
+                      "testcase": "Parameter name name valid case: in string length range minimum 1 (include) and maximum 20 (include)",
+                      "testdata": [
+                        "None",
+                        "D",
+                        "pilYreCdkVnvBRJxWaEG",
+                        "WPKFfsLiSGH.RnltdmY",
+                        "ezb",
+                        "EZB"
+                      ]
+                    },
+                    "invalid_partition": {
+                      "testcase": "Parameter name name invalid case: out of string valid length range: shorter than minimum 1 or longer than maximum 20",
+                      "testdata": [
+                        "",
+                        "aXVRQLJpOcuAwdFhGvPkK",
+                        "}62$~=>_[{58]7+,/-",
+                        "\u516b\u4e8c\u516d"
+                      ]
+                    }
+                  }
+                },
+                "status": {
+                  "type": "string",
+                  "description": "status",
+                  "testcases": {
+                    "valid_partition": {
+                      "testcase": "Parameter name status valid case: in string length range minimum 1 (include) and maximum 20 (include)",
+                      "testdata": [
+                        "None",
+                        "A",
+                        "kGWYAlRjpvrhQfaCFgPo",
+                        "HFKeaC.b",
+                        "KhRPduQlv",
+                        "kHrpDUqLV"
+                      ]
+                    },
+                    "invalid_partition": {
+                      "testcase": "Parameter name status invalid case: out of string valid length range: shorter than minimum 1 or longer than maximum 20",
+                      "testdata": [
+                        "",
+                        "rCAfjqsFzHMcmKxobLQiU",
+                        "!18/$+",
+                        "\u516d"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "OK"
+        },
+        "201": {
+          "description": "Created"
+        },
+        "401": {
+          "description": "Unauthorized"
+        },
+        "403": {
+          "description": "Forbidden"
+        },
+        "404": {
+          "description": "Not Found"
+        },
+        "405": {
+          "description": "Invalid input"
+        }
+      }
+    },
+    "delete": {
+      "parameters": [
+        {
+          "name": "petId",
+          "in": "path",
+          "description": "Pet id to delete",
+          "required": true,
+          "style": "simple",
+          "schema": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name petId valid case: in parameter value range minimum -9223372036854775808 (include) and maximum 9223372036854775808 (include)",
+              "testdata": [
+                -9223372036854775808,
+                9223372036854775808,
+                -9223372036854775807,
+                9223372036854775807,
+                2728804007120713308
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name petId invalid case: out of parameter valid range more than maximum (not include) 9223372036854775808 or small than minimum (include) -9223372036854775808",
+              "testdata": [
+                "None",
+                -9223372036854775809,
+                9223372036854775809
+              ]
+            }
+          }
+        },
+        {
+          "name": "api_key",
+          "in": "header",
+          "description": "api_key",
+          "required": false,
+          "schema": {
+            "type": "string"
+          },
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name api_key valid case: in string length range minimum 1 (include) and maximum 20 (include)",
+              "testdata": [
+                "None",
+                "L",
+                "nHKfMzrkdTymgDQpJAlY",
+                "rAbz.Ts",
+                "dVcP",
+                "DvCp"
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name api_key invalid case: out of string valid length range: shorter than minimum 1 or longer than maximum 20",
+              "testdata": [
+                "LXDikUageKGuAQpzoBjsy",
+                "9,4><]2~7_}?"
+              ]
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK"
+        },
+        "204": {
+          "description": "No Content"
+        },
+        "400": {
+          "description": "Invalid ID supplied"
+        },
+        "401": {
+          "description": "Unauthorized"
+        },
+        "403": {
+          "description": "Forbidden"
+        },
+        "404": {
+          "description": "Pet not found"
+        }
+      }
+    }
+  },
+  "/v2/pet/{petId}/uploadImage": {
+    "post": {
+      "parameters": [
+        {
+          "name": "petId",
+          "in": "path",
+          "description": "ID of pet to update",
+          "required": true,
+          "style": "simple",
+          "schema": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name petId valid case: in parameter value range minimum -9223372036854775808 (include) and maximum 9223372036854775808 (include)",
+              "testdata": [
+                -9223372036854775808,
+                9223372036854775808,
+                -9223372036854775807,
+                9223372036854775807,
+                6377360589847618166
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name petId invalid case: out of parameter valid range more than maximum (not include) 9223372036854775808 or small than minimum (include) -9223372036854775808",
+              "testdata": [
+                "None",
+                -9223372036854775809,
+                9223372036854775809
+              ]
+            }
+          }
+        }
+      ],
+      "requestBody": {
+        "content": {
+          "multipart/form-data": {
+            "schema": {
+              "required": [],
+              "type": "object",
+              "properties": {
+                "additionalMetadata": {
+                  "type": "string",
+                  "description": "additionalMetadata",
+                  "testcases": {
+                    "valid_partition": {
+                      "testcase": "Parameter name additionalMetadata valid case: in string length range minimum 1 (include) and maximum 20 (include)",
+                      "testdata": [
+                        "None",
+                        "Y",
+                        "gzwonGcVkfaYNrERChjp",
+                        "IMX.kySag",
+                        "hP",
+                        "Hp"
+                      ]
+                    },
+                    "invalid_partition": {
+                      "testcase": "Parameter name additionalMetadata invalid case: out of string valid length range: shorter than minimum 1 or longer than maximum 20",
+                      "testdata": [
+                        "",
+                        "SWwiThtXduMDCbxgmGcJN",
+                        "{(!`?<[#\\:|;",
+                        "\u4e8c\u516b"
+                      ]
+                    }
+                  }
+                },
+                "file": {
+                  "type": "string",
+                  "description": "file detail",
+                  "format": "binary",
+                  "testcases": null
+                }
+              }
+            },
+            "encoding": {
+              "additionalMetadata": {
+                "contentType": "text/plain"
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "successful operation",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModelApiResponse"
+              }
+            }
+          }
+        },
+        "201": {
+          "description": "Created"
+        },
+        "401": {
+          "description": "Unauthorized"
+        },
+        "403": {
+          "description": "Forbidden"
+        },
+        "404": {
+          "description": "Not Found"
+        }
+      }
+    }
+  },
+  "/v2/store/inventory": {
+    "get": {
+      "responses": {
+        "200": {
+          "description": "successful operation",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "Unauthorized"
+        },
+        "403": {
+          "description": "Forbidden"
+        },
+        "404": {
+          "description": "Not Found"
+        }
+      }
+    }
+  },
+  "/v2/store/order": {
+    "post": {
+      "requestBody": {
+        "content": {
+          "*/*": {
+            "schema": {
+              "$ref": "#/components/schemas/Order",
+              "testcases": {
+                "valid_partition": {
+                  "testcase": "Parameter name requestBody is object valid case: parameters in object body are valid",
+                  "testdata": {
+                    "complete": "None",
+                    "id": -9223372036854775807,
+                    "petId": "None",
+                    "quantity": "None",
+                    "shipDate": "2021-09-06T14:03:27Z",
+                    "status": "''"
+                  }
+                },
+                "invalid_partition": {
+                  "testcase": "Parameter name requestBody is object invalid case: parameters in object body are invalid ",
+                  "testdata": {
+                    "complete": "no",
+                    "id": -9223372036854775809,
+                    "petId": -9223372036854775809,
+                    "quantity": 2147483648,
+                    "shipDate": "2021-09-06T14:60:27",
+                    "status": "roaddb"
+                  }
+                }
+              }
+            }
+          },
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Order"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "successful operation",
+          "content": {
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              }
+            }
+          }
+        },
+        "201": {
+          "description": "Created"
+        },
+        "400": {
+          "description": "Invalid Order"
+        },
+        "401": {
+          "description": "Unauthorized"
+        },
+        "403": {
+          "description": "Forbidden"
+        },
+        "404": {
+          "description": "Not Found"
+        }
+      }
+    }
+  },
+  "/v2/store/order/{orderId}": {
+    "get": {
+      "parameters": [
+        {
+          "name": "orderId",
+          "in": "path",
+          "description": "ID of pet that needs to be fetched",
+          "required": true,
+          "style": "simple",
+          "schema": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name orderId valid case: in parameter value range minimum -9223372036854775808 (include) and maximum 9223372036854775808 (include)",
+              "testdata": [
+                -9223372036854775808,
+                9223372036854775808,
+                -9223372036854775807,
+                9223372036854775807,
+                3245743959754132299
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name orderId invalid case: out of parameter valid range more than maximum (not include) 9223372036854775808 or small than minimum (include) -9223372036854775808",
+              "testdata": [
+                "None",
+                -9223372036854775809,
+                9223372036854775809
+              ]
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "successful operation",
+          "content": {
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Invalid ID supplied"
+        },
+        "401": {
+          "description": "Unauthorized"
+        },
+        "403": {
+          "description": "Forbidden"
+        },
+        "404": {
+          "description": "Order not found"
+        }
+      }
+    },
+    "delete": {
+      "parameters": [
+        {
+          "name": "orderId",
+          "in": "path",
+          "description": "ID of the order that needs to be deleted",
+          "required": true,
+          "style": "simple",
+          "schema": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name orderId valid case: in parameter value range minimum -9223372036854775808 (include) and maximum 9223372036854775808 (include)",
+              "testdata": [
+                -9223372036854775808,
+                9223372036854775808,
+                -9223372036854775807,
+                9223372036854775807,
+                -1799887783940401407
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name orderId invalid case: out of parameter valid range more than maximum (not include) 9223372036854775808 or small than minimum (include) -9223372036854775808",
+              "testdata": [
+                "None",
+                -9223372036854775809,
+                9223372036854775809
+              ]
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK"
+        },
+        "204": {
+          "description": "No Content"
+        },
+        "400": {
+          "description": "Invalid ID supplied"
+        },
+        "401": {
+          "description": "Unauthorized"
+        },
+        "403": {
+          "description": "Forbidden"
+        },
+        "404": {
+          "description": "Order not found"
+        }
+      }
+    }
+  },
+  "/v2/user": {
+    "post": {
+      "requestBody": {
+        "content": {
+          "*/*": {
+            "schema": {
+              "$ref": "#/components/schemas/User",
+              "testcases": {
+                "valid_partition": {
+                  "testcase": "Parameter name requestBody is object valid case: parameters in object body are valid",
+                  "testdata": {
+                    "email": "DteqHv",
+                    "firstName": "p",
+                    "id": 3042719888425856577,
+                    "lastName": "BGODwCPURxrqJucNAmYL",
+                    "password": "NYOqXhjV.GFxslA",
+                    "phone": "mbXCAUu.JGKBz",
+                    "userStatus": 2147483646,
+                    "username": "BqTt"
+                  }
+                },
+                "invalid_partition": {
+                  "testcase": "Parameter name requestBody is object invalid case: parameters in object body are invalid ",
+                  "testdata": {
+                    "email": "",
+                    "firstName": "",
+                    "id": -9223372036854775809,
+                    "lastName": "YRXhpjeilgdcsqnQxIkLK",
+                    "password": "?3#+~*^@/(2{8%",
+                    "phone": "\u4e00",
+                    "userStatus": -2147483649,
+                    "username": "tXcZTkKShPHFmdgyAUMer"
+                  }
+                }
+              }
+            }
+          },
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/User"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "successful operation"
+        },
+        "201": {
+          "description": "Created"
+        },
+        "401": {
+          "description": "Unauthorized"
+        },
+        "403": {
+          "description": "Forbidden"
+        },
+        "404": {
+          "description": "Not Found"
+        }
+      }
+    }
+  },
+  "/v2/user/createWithArray": {
+    "post": {
+      "requestBody": {
+        "content": {
+          "*/*": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/User"
+              },
+              "testcases": {
+                "valid_partition": {
+                  "testcase": "Parameter name requestBody is object array valid case: parameters in object body are valid",
+                  "testdata": [
+                    {
+                      "email": "akGtJQhHKeWoT.",
+                      "firstName": "None",
+                      "id": 9223372036854775808,
+                      "lastName": ".hfCQw",
+                      "password": "NYOqXhjV.GFxslA",
+                      "phone": "BdSzbDKCXYuGLcjxUMHP",
+                      "userStatus": 2147483646,
+                      "username": "A"
+                    },
+                    {
+                      "email": "NgecHOvEFnpGxrTKmVXl",
+                      "firstName": "exMquSNlWATmGFsVQvba",
+                      "id": "None",
+                      "lastName": "None",
+                      "password": "None",
+                      "phone": "BdSzbDKCXYuGLcjxUMHP",
+                      "userStatus": -2147483647,
+                      "username": "BqTt"
+                    },
+                    {
+                      "email": "B",
+                      "firstName": "Bk",
+                      "id": 3042719888425856577,
+                      "lastName": "rHcGSmeWKFko",
+                      "password": "BNT",
+                      "phone": "vKIlUg",
+                      "userStatus": -2147483647,
+                      "username": "bQtT"
+                    }
+                  ]
+                },
+                "invalid_partition": {
+                  "testcase": "Parameter name requestBody is object array invalid case: parameters in object body are invalid ",
+                  "testdata": [
+                    {
+                      "email": "48`|]2&)[?1_",
+                      "firstName": "\u4e03\u56db\u516b",
+                      "id": 9223372036854775809,
+                      "lastName": "\u4e09\u4e94\u4e00",
+                      "password": "?3#+~*^@/(2{8%",
+                      "phone": "XPMRhcadJQrUYqomsIklZ",
+                      "userStatus": -2147483649,
+                      "username": "4-{63(%;+[!*,<7"
+                    },
+                    {
+                      "email": "\u516b\u4e94\u516d",
+                      "firstName": "}+/\\~7#*2,%:]",
+                      "id": -9223372036854775809,
+                      "lastName": "~9:^1<(=%",
+                      "password": "\u4e8c\u5341\u4e94",
+                      "phone": "",
+                      "userStatus": -2147483649,
+                      "username": "\u516d\u4e09"
+                    },
+                    {
+                      "email": "48`|]2&)[?1_",
+                      "firstName": "McKYIahZNLBDPfuWAVrnX",
+                      "id": -9223372036854775809,
+                      "lastName": "~9:^1<(=%",
+                      "password": "?3#+~*^@/(2{8%",
+                      "phone": "\u4e00",
+                      "userStatus": 2147483648,
+                      "username": "4-{63(%;+[!*,<7"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "successful operation"
+        },
+        "201": {
+          "description": "Created"
+        },
+        "401": {
+          "description": "Unauthorized"
+        },
+        "403": {
+          "description": "Forbidden"
+        },
+        "404": {
+          "description": "Not Found"
+        }
+      }
+    }
+  },
+  "/v2/user/createWithList": {
+    "post": {
+      "requestBody": {
+        "content": {
+          "*/*": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/User"
+              },
+              "testcases": {
+                "valid_partition": {
+                  "testcase": "Parameter name requestBody is object array valid case: parameters in object body are valid",
+                  "testdata": [
+                    {
+                      "email": "B",
+                      "firstName": "bJm.gWqVRpaZ",
+                      "id": -9223372036854775807,
+                      "lastName": "None",
+                      "password": "None",
+                      "phone": "mbXCAUu.JGKBz",
+                      "userStatus": "None",
+                      "username": "mrXjBctPfJeDwNKnWIMz"
+                    },
+                    {
+                      "email": "DteqHv",
+                      "firstName": "None",
+                      "id": -9223372036854775807,
+                      "lastName": "rHcGSmeWKFko",
+                      "password": "BNT",
+                      "phone": "mbXCAUu.JGKBz",
+                      "userStatus": -2147483648,
+                      "username": "None"
+                    }
+                  ]
+                },
+                "invalid_partition": {
+                  "testcase": "Parameter name requestBody is object array invalid case: parameters in object body are invalid ",
+                  "testdata": [
+                    {
+                      "email": "lszGbUuBiWDZNTCvmywne",
+                      "firstName": "McKYIahZNLBDPfuWAVrnX",
+                      "id": -9223372036854775809,
+                      "lastName": "YRXhpjeilgdcsqnQxIkLK",
+                      "password": "VOomfbqyQEgULvxMKhsDB",
+                      "phone": "XPMRhcadJQrUYqomsIklZ",
+                      "userStatus": 2147483648,
+                      "username": "\u516d\u4e09"
+                    },
+                    {
+                      "email": "48`|]2&)[?1_",
+                      "firstName": "",
+                      "id": -9223372036854775809,
+                      "lastName": "~9:^1<(=%",
+                      "password": "VOomfbqyQEgULvxMKhsDB",
+                      "phone": "=!)+`:>~61^",
+                      "userStatus": -2147483649,
+                      "username": "\u516d\u4e09"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "successful operation"
+        },
+        "201": {
+          "description": "Created"
+        },
+        "401": {
+          "description": "Unauthorized"
+        },
+        "403": {
+          "description": "Forbidden"
+        },
+        "404": {
+          "description": "Not Found"
+        }
+      }
+    }
+  },
+  "/v2/user/login": {
+    "get": {
+      "parameters": [
+        {
+          "name": "username",
+          "in": "query",
+          "description": "The user name for login",
+          "required": false,
+          "style": "form",
+          "schema": {
+            "type": "string"
+          },
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name username valid case: in string length range minimum 1 (include) and maximum 20 (include)",
+              "testdata": [
+                "None",
+                "K",
+                "YeawJcDgOWQPFxMzfVCl",
+                "arHLJIg.KSVRGUm",
+                "TwmCYylAOoainbJG",
+                "tWMcyYLaoOAINBjg"
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name username invalid case: out of string valid length range: shorter than minimum 1 or longer than maximum 20",
+              "testdata": [
+                "",
+                "TIkcahDqKWFAtzidoXRrO",
+                "$[|<#;+-9851",
+                "\u4e8c\u4e5d"
+              ]
+            }
+          }
+        },
+        {
+          "name": "password",
+          "in": "query",
+          "description": "The password for login in clear text",
+          "required": false,
+          "style": "form",
+          "schema": {
+            "type": "string"
+          },
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name password valid case: in string length range minimum 1 (include) and maximum 20 (include)",
+              "testdata": [
+                "None",
+                "u",
+                "OSYWhlvTLzkXEVCFbwuP",
+                "jaBITsPSCY.",
+                "GMvDLSxWkzbgeOdXBu",
+                "gmVdlsXwKZBGEoDxbU"
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name password invalid case: out of string valid length range: shorter than minimum 1 or longer than maximum 20",
+              "testdata": [
+                "",
+                "CVOMABFTlsKSYUoiLPJWr",
+                "$2*0+81,",
+                "\u4e8c"
+              ]
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "successful operation",
+          "content": {
+            "application/xml": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Invalid username/password supplied"
+        },
+        "401": {
+          "description": "Unauthorized"
+        },
+        "403": {
+          "description": "Forbidden"
+        },
+        "404": {
+          "description": "Not Found"
+        }
+      }
+    }
+  },
+  "/v2/user/logout": {
+    "get": {
+      "responses": {
+        "200": {
+          "description": "successful operation"
+        },
+        "401": {
+          "description": "Unauthorized"
+        },
+        "403": {
+          "description": "Forbidden"
+        },
+        "404": {
+          "description": "Not Found"
+        }
+      }
+    }
+  },
+  "/v2/user/{username}": {
+    "get": {
+      "parameters": [
+        {
+          "name": "username",
+          "in": "path",
+          "description": "The name that needs to be fetched. Use user1 for testing. ",
+          "required": true,
+          "style": "simple",
+          "schema": {
+            "type": "string"
+          },
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name username valid case: in string length range minimum 1 (include) and maximum 20 (include)",
+              "testdata": [
+                "I",
+                "jRGgWXdCnpkHvStlyIci",
+                "CIFTa.mkS",
+                "yeguExk",
+                "YEGUeXK"
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name username invalid case: out of string valid length range: shorter than minimum 1 or longer than maximum 20",
+              "testdata": [
+                "None",
+                "",
+                "mDWqBxJTeVQjwNarXfLsb",
+                ">$~+?7#%2(5*={<;!_`",
+                "\u4e94\u56db"
+              ]
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "successful operation",
+          "content": {
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Invalid username supplied"
+        },
+        "401": {
+          "description": "Unauthorized"
+        },
+        "403": {
+          "description": "Forbidden"
+        },
+        "404": {
+          "description": "User not found"
+        }
+      }
+    },
+    "put": {
+      "parameters": [
+        {
+          "name": "username",
+          "in": "path",
+          "description": "name that need to be updated",
+          "required": true,
+          "style": "simple",
+          "schema": {
+            "type": "string"
+          },
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name username valid case: in string length range minimum 1 (include) and maximum 20 (include)",
+              "testdata": [
+                "F",
+                "qBPmiuFUbOwlckaytILM",
+                "RIcwuX.CLrZy",
+                "eHaDZt",
+                "EhAdzT"
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name username invalid case: out of string valid length range: shorter than minimum 1 or longer than maximum 20",
+              "testdata": [
+                "None",
+                "",
+                "dMfxVWyFHiKXEAkJbYjlc",
+                "2?4",
+                "\u4e8c\u516d\u4e03"
+              ]
+            }
+          }
+        }
+      ],
+      "requestBody": {
+        "content": {
+          "*/*": {
+            "schema": {
+              "$ref": "#/components/schemas/User",
+              "testcases": {
+                "valid_partition": {
+                  "testcase": "Parameter name requestBody is object valid case: parameters in object body are valid",
+                  "testdata": {
+                    "email": "dTEQhV",
+                    "firstName": "p",
+                    "id": -9223372036854775808,
+                    "lastName": "None",
+                    "password": "c",
+                    "phone": "C",
+                    "userStatus": "None",
+                    "username": "bQtT"
+                  }
+                },
+                "invalid_partition": {
+                  "testcase": "Parameter name requestBody is object invalid case: parameters in object body are invalid ",
+                  "testdata": {
+                    "email": "lszGbUuBiWDZNTCvmywne",
+                    "firstName": "",
+                    "id": -9223372036854775809,
+                    "lastName": "",
+                    "password": "",
+                    "phone": "=!)+`:>~61^",
+                    "userStatus": -2147483649,
+                    "username": "\u516d\u4e09"
+                  }
+                }
+              }
+            }
+          },
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/User"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "OK"
+        },
+        "201": {
+          "description": "Created"
+        },
+        "400": {
+          "description": "Invalid user supplied"
+        },
+        "401": {
+          "description": "Unauthorized"
+        },
+        "403": {
+          "description": "Forbidden"
+        },
+        "404": {
+          "description": "User not found"
+        }
+      }
+    },
+    "delete": {
+      "parameters": [
+        {
+          "name": "username",
+          "in": "path",
+          "description": "The name that needs to be deleted",
+          "required": true,
+          "style": "simple",
+          "schema": {
+            "type": "string"
+          },
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name username valid case: in string length range minimum 1 (include) and maximum 20 (include)",
+              "testdata": [
+                "Q",
+                "kaBiMzNwotVlFhmCPcAL",
+                "uBxYaLTFZW.lEiJn",
+                "M",
+                "m"
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name username invalid case: out of string valid length range: shorter than minimum 1 or longer than maximum 20",
+              "testdata": [
+                "None",
+                "",
+                "vcTKyJlDLoHpQWBmznefU",
+                ">~+97}[\\<",
+                "\u4e09\u4e5d"
+              ]
+            }
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK"
+        },
+        "204": {
+          "description": "No Content"
+        },
+        "400": {
+          "description": "Invalid username supplied"
+        },
+        "401": {
+          "description": "Unauthorized"
+        },
+        "403": {
+          "description": "Forbidden"
+        },
+        "404": {
+          "description": "User not found"
+        }
+      }
+    }
+  }
+}

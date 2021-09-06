@@ -1,0 +1,65 @@
+curl -X PUT "localhost:9200/customer/_doc/1?pretty" -H 'Content-Type: application/json' -d'
+{
+  "doc": { "name": "Jane Doe", "age": 20 }
+}
+'
+
+curl -X PUT "localhost:9200/customer/_doc/2?pretty" -H 'Content-Type: application/json' -d '{"msg":"Eating an apple a day keeps docktor away"}'
+
+curl -X GET "localhost:9200/customer/_search?q=*&pretty"
+curl -X POST "localhost:9200/customer/_search?q=*&pretty"
+curl -X POST "localhost:9200/customer/_search?q=apple&pretty"
+
+curl -X POST "localhost:9200/customer/_search?&pretty" -H 'Content-Type: application/json' -d'
+{
+  "query": {
+    "match": {
+       "msg": "eating"
+       }
+    }
+  }
+'
+curl -X POST "localhost:9200/customer/_search" -H 'Content-Type: application/json' -d'
+{
+  "query": {
+    "match": {
+       "msg":{
+            "query": "eating",
+            "analyzer": "english"
+        }
+       }
+    }
+  }
+'
+
+curl -X POST "localhost:9200/customer/_analyze" -H 'Content-Type: application/json' -d'
+{
+    "field": "msg",
+    "text": "Eating an apple a day keeps docktor away"
+}
+'
+curl -X PUT "localhost:9200/customer/_mapping/_doc?include_type_name=true" -H 'Content-Type: application/json' -d'
+{
+    "properties": {
+        "msg_english": {
+            "type": "text",
+            "analyzer": "english"
+        }
+    }
+}
+'
+
+curl -X PUT "localhost:9200/customer/_doc/2?pretty" -H 'Content-Type: application/json' -d '{"msg":"Eating an apple a day keeps docktor away",
+"msg_english":"Eating an apple a day keeps docktor away"}'
+
+curl -X POST "localhost:9200/_analyze" -H 'Content-Type: application/json' -d'
+{
+    "char_filter": [],
+    "tokenizer": "standard",
+    "filter": [
+        "stop",
+        "lowercase",
+        "stemmer"],
+    "text": "Eating an apple a day keeps docktor away"
+}
+'

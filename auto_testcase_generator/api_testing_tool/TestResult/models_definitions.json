@@ -1,0 +1,705 @@
+﻿{
+  "definitions": {
+    "Category": {
+      "title": "Category",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name id valid case: in parameter value range minimum -9223372036854775808 (include) and maximum 9223372036854775808 (include)",
+              "testdata": [
+                "None",
+                -9223372036854775808,
+                9223372036854775808,
+                -9223372036854775807,
+                9223372036854775807,
+                2600117687661204041
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name id invalid case: out of parameter valid range more than maximum (not include) 9223372036854775808 or small than minimum (include) -9223372036854775808",
+              "testdata": [
+                -9223372036854775809,
+                9223372036854775809
+              ]
+            }
+          }
+        },
+        "name": {
+          "type": "string",
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name name valid case: in string length range minimum 1 (include) and maximum 20 (include)",
+              "testdata": [
+                "None",
+                "s",
+                "gztbGKAXwyoPqSmQknUu",
+                "oJqTsP.n",
+                "QuzrwqamWjAZPcKJfO",
+                "qUZRWQAMwJazpCkjFo"
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name name invalid case: out of string valid length range: shorter than minimum 1 or longer than maximum 20",
+              "testdata": [
+                "",
+                "sjPqNBDGWdSEzwVHYMxhC",
+                "}8$",
+                "\u516d\u56db"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "ModelApiResponse": {
+      "title": "ModelApiResponse",
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name code valid case: in parameter value range minimum -2147483648 (include) and maximum 2147483647 (include)",
+              "testdata": [
+                "None",
+                -2147483648,
+                2147483647,
+                -2147483647,
+                2147483646,
+                -1754481851
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name code invalid case: out of parameter valid range more than maximum (not include) 2147483647 or small than minimum (include) -2147483648",
+              "testdata": [
+                -2147483649,
+                2147483648
+              ]
+            }
+          }
+        },
+        "message": {
+          "type": "string",
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name message valid case: in string length range minimum 1 (include) and maximum 20 (include)",
+              "testdata": [
+                "None",
+                "h",
+                "mMfiwOEuXthjbSBnzgRL",
+                "cXTVulEOfB.rLmpN",
+                "Qm",
+                "qM"
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name message invalid case: out of string valid length range: shorter than minimum 1 or longer than maximum 20",
+              "testdata": [
+                "",
+                "HcDEkdjlSNtqUQpBPszTG",
+                "8?]\\6{<}|_^5>7;)@",
+                "\u56db\u4e5d\u4e09\u4e03"
+              ]
+            }
+          }
+        },
+        "type": {
+          "type": "string",
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name type valid case: in string length range minimum 1 (include) and maximum 20 (include)",
+              "testdata": [
+                "None",
+                "A",
+                "hMwcHXQaOfjRlVvLNPzs",
+                "bTf.mrgoR",
+                "HtOw",
+                "hToW"
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name type invalid case: out of string valid length range: shorter than minimum 1 or longer than maximum 20",
+              "testdata": [
+                "",
+                "AqmUtZDReaIEVWCgkiQBH",
+                ">60{<~*",
+                "\u5341\u4e09\u516b"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "Order": {
+      "title": "Order",
+      "type": "object",
+      "properties": {
+        "complete": {
+          "type": "boolean",
+          "example": false,
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name complete valid case: input valid boolean value: true or false",
+              "testdata": [
+                "True",
+                "False",
+                "''",
+                "Null",
+                "None"
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name complete invalid case: input non boolean value",
+              "testdata": [
+                0,
+                1,
+                "yes",
+                "no"
+              ]
+            }
+          }
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name id valid case: in parameter value range minimum -9223372036854775808 (include) and maximum 9223372036854775808 (include)",
+              "testdata": [
+                "None",
+                -9223372036854775808,
+                9223372036854775808,
+                -9223372036854775807,
+                9223372036854775807,
+                -202567353048965383
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name id invalid case: out of parameter valid range more than maximum (not include) 9223372036854775808 or small than minimum (include) -9223372036854775808",
+              "testdata": [
+                -9223372036854775809,
+                9223372036854775809
+              ]
+            }
+          }
+        },
+        "petId": {
+          "type": "integer",
+          "format": "int64",
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name petId valid case: in parameter value range minimum -9223372036854775808 (include) and maximum 9223372036854775808 (include)",
+              "testdata": [
+                "None",
+                -9223372036854775808,
+                9223372036854775808,
+                -9223372036854775807,
+                9223372036854775807,
+                5268225377130204250
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name petId invalid case: out of parameter valid range more than maximum (not include) 9223372036854775808 or small than minimum (include) -9223372036854775808",
+              "testdata": [
+                -9223372036854775809,
+                9223372036854775809
+              ]
+            }
+          }
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32",
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name quantity valid case: in parameter value range minimum -2147483648 (include) and maximum 2147483647 (include)",
+              "testdata": [
+                "None",
+                -2147483648,
+                2147483647,
+                -2147483647,
+                2147483646,
+                1490470177
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name quantity invalid case: out of parameter valid range more than maximum (not include) 2147483647 or small than minimum (include) -2147483648",
+              "testdata": [
+                -2147483649,
+                2147483648
+              ]
+            }
+          }
+        },
+        "shipDate": {
+          "type": "string",
+          "format": "date-time",
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name shipDate valid case: input valid dateTime with correct format",
+              "testdata": [
+                "None",
+                "2021-09-06T14:03:27Z",
+                "2021-09-06T14:03:27+08:00",
+                "2021-09-06T14:03:27-08:00",
+                "2000-02-29",
+                "2015-06-30T23:59:60"
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name shipDate invalid case: input invalid dateTime or incorrect format",
+              "testdata": [
+                "21-09-06T14:03:27",
+                "2021-091-06T14:03:27",
+                "2021-13-06T14:03:27",
+                "2021-09-061T14:03:27",
+                "2021-09-00T14:03:27",
+                "2021-09-06T24:03:27",
+                "2021-09-06T14:60:27",
+                "2021-09-06T14:03:61",
+                "2021-09-06T14:03:27+08+00",
+                "2021-09-06T14:03:27+08:00Z",
+                "2021=09=06T14:03:27",
+                "2021-09-06T14;03;27",
+                "2021-09-06T14:03:27,09",
+                "2021-09-06I14:03:27",
+                "0123456789",
+                "0000-00-00"
+              ]
+            }
+          }
+        },
+        "status": {
+          "type": "string",
+          "description": "Order Status",
+          "enum": [
+            "approved",
+            "delivered",
+            "placed"
+          ],
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name status valid case: input one enum value in ['approved', 'delivered', 'placed']",
+              "testdata": [
+                "approved",
+                "delivered",
+                "placed",
+                "''",
+                "None",
+                "APPROVED",
+                "DELIVERED",
+                "PLACED"
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name status invalid case: input value out of enum list ['approved', 'delivered', 'placed']",
+              "testdata": [
+                "roaddb"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "Pet": {
+      "title": "Pet",
+      "required": [
+        "name",
+        "photoUrls"
+      ],
+      "type": "object",
+      "properties": {
+        "category": {
+          "$ref": "#/components/schemas/Category"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name id valid case: in parameter value range minimum -9223372036854775808 (include) and maximum 9223372036854775808 (include)",
+              "testdata": [
+                "None",
+                -9223372036854775808,
+                9223372036854775808,
+                -9223372036854775807,
+                9223372036854775807,
+                -3091249421448747784
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name id invalid case: out of parameter valid range more than maximum (not include) 9223372036854775808 or small than minimum (include) -9223372036854775808",
+              "testdata": [
+                -9223372036854775809,
+                9223372036854775809
+              ]
+            }
+          }
+        },
+        "name": {
+          "type": "string",
+          "example": "doggie",
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name name valid case: in string length range minimum 1 (include) and maximum 20 (include)",
+              "testdata": [
+                "B",
+                "uRlojQUvrhLmIXxdKBEy",
+                "ZlGrbxIw.",
+                "peLPSXy",
+                "PElpsxY"
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name name invalid case: out of string valid length range: shorter than minimum 1 or longer than maximum 20",
+              "testdata": [
+                "None",
+                "",
+                "UqhXxTvyGtIkrbHZjdPAm",
+                "&-{/}=^>,%(\\3~8`@",
+                "\u4e00"
+              ]
+            }
+          }
+        },
+        "photoUrls": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name photoUrls valid case: in string length range minimum 1 (include) and maximum 20 (include)",
+              "testdata": [
+                [
+                  "y",
+                  "HRstCOhbJunzSmjcWfKE",
+                  "wOnMpZN.qj",
+                  "woXFlrqgdMjhue"
+                ],
+                [
+                  "WOxfLRQGDmJHUE"
+                ]
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name photoUrls invalid case: out of string valid length range: shorter than minimum 1 or longer than maximum 20",
+              "testdata": [
+                [
+                  "None",
+                  "",
+                  "jFMGciRDmnbZPstVdSHfX",
+                  "731],;6|$%"
+                ],
+                [
+                  "\u4e00\u4e8c"
+                ]
+              ]
+            }
+          }
+        },
+        "status": {
+          "type": "string",
+          "description": "pet status in the store",
+          "enum": [
+            "available",
+            "pending",
+            "sold"
+          ],
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name status valid case: input one enum value in ['available', 'pending', 'sold']",
+              "testdata": [
+                "available",
+                "pending",
+                "sold",
+                "''",
+                "None",
+                "AVAILABLE",
+                "PENDING",
+                "SOLD"
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name status invalid case: input value out of enum list ['available', 'pending', 'sold']",
+              "testdata": [
+                "generator"
+              ]
+            }
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Tag"
+          }
+        }
+      }
+    },
+    "Tag": {
+      "title": "Tag",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name id valid case: in parameter value range minimum -9223372036854775808 (include) and maximum 9223372036854775808 (include)",
+              "testdata": [
+                "None",
+                -9223372036854775808,
+                9223372036854775808,
+                -9223372036854775807,
+                9223372036854775807,
+                2107441221541785731
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name id invalid case: out of parameter valid range more than maximum (not include) 9223372036854775808 or small than minimum (include) -9223372036854775808",
+              "testdata": [
+                -9223372036854775809,
+                9223372036854775809
+              ]
+            }
+          }
+        },
+        "name": {
+          "type": "string",
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name name valid case: in string length range minimum 1 (include) and maximum 20 (include)",
+              "testdata": [
+                "None",
+                "E",
+                "DhKZTisFajGdCrYEgwQM",
+                "j.nNh",
+                "fpeMIgVdQnWUcSDFC",
+                "FPEmiGvDqNwuCsdfc"
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name name invalid case: out of string valid length range: shorter than minimum 1 or longer than maximum 20",
+              "testdata": [
+                "",
+                "ZBncoOeKbDWSVlygCIuUw",
+                "@,",
+                "\u516b"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "User": {
+      "title": "User",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name email valid case: in string length range minimum 1 (include) and maximum 20 (include)",
+              "testdata": [
+                "None",
+                "B",
+                "NgecHOvEFnpGxrTKmVXl",
+                "akGtJQhHKeWoT.",
+                "dTEQhV",
+                "DteqHv"
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name email invalid case: out of string valid length range: shorter than minimum 1 or longer than maximum 20",
+              "testdata": [
+                "",
+                "lszGbUuBiWDZNTCvmywne",
+                "48`|]2&)[?1_",
+                "\u516b\u4e94\u516d"
+              ]
+            }
+          }
+        },
+        "firstName": {
+          "type": "string",
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name firstName valid case: in string length range minimum 1 (include) and maximum 20 (include)",
+              "testdata": [
+                "None",
+                "p",
+                "exMquSNlWATmGFsVQvba",
+                "bJm.gWqVRpaZ",
+                "Bk",
+                "bK"
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name firstName invalid case: out of string valid length range: shorter than minimum 1 or longer than maximum 20",
+              "testdata": [
+                "",
+                "McKYIahZNLBDPfuWAVrnX",
+                "}+/\\~7#*2,%:]",
+                "\u4e03\u56db\u516b"
+              ]
+            }
+          }
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name id valid case: in parameter value range minimum -9223372036854775808 (include) and maximum 9223372036854775808 (include)",
+              "testdata": [
+                "None",
+                -9223372036854775808,
+                9223372036854775808,
+                -9223372036854775807,
+                9223372036854775807,
+                3042719888425856577
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name id invalid case: out of parameter valid range more than maximum (not include) 9223372036854775808 or small than minimum (include) -9223372036854775808",
+              "testdata": [
+                -9223372036854775809,
+                9223372036854775809
+              ]
+            }
+          }
+        },
+        "lastName": {
+          "type": "string",
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name lastName valid case: in string length range minimum 1 (include) and maximum 20 (include)",
+              "testdata": [
+                "None",
+                "F",
+                "BGODwCPURxrqJucNAmYL",
+                ".hfCQw",
+                "RhCgsMEwkfKO",
+                "rHcGSmeWKFko"
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name lastName invalid case: out of string valid length range: shorter than minimum 1 or longer than maximum 20",
+              "testdata": [
+                "",
+                "YRXhpjeilgdcsqnQxIkLK",
+                "~9:^1<(=%",
+                "\u4e09\u4e94\u4e00"
+              ]
+            }
+          }
+        },
+        "password": {
+          "type": "string",
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name password valid case: in string length range minimum 1 (include) and maximum 20 (include)",
+              "testdata": [
+                "None",
+                "c",
+                "sCDpbKGxZBWzFVEPfYrh",
+                "NYOqXhjV.GFxslA",
+                "BNT",
+                "bnt"
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name password invalid case: out of string valid length range: shorter than minimum 1 or longer than maximum 20",
+              "testdata": [
+                "",
+                "VOomfbqyQEgULvxMKhsDB",
+                "?3#+~*^@/(2{8%",
+                "\u4e8c\u5341\u4e94"
+              ]
+            }
+          }
+        },
+        "phone": {
+          "type": "string",
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name phone valid case: in string length range minimum 1 (include) and maximum 20 (include)",
+              "testdata": [
+                "None",
+                "C",
+                "BdSzbDKCXYuGLcjxUMHP",
+                "mbXCAUu.JGKBz",
+                "VkiLuG",
+                "vKIlUg"
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name phone invalid case: out of string valid length range: shorter than minimum 1 or longer than maximum 20",
+              "testdata": [
+                "",
+                "XPMRhcadJQrUYqomsIklZ",
+                "=!)+`:>~61^",
+                "\u4e00"
+              ]
+            }
+          }
+        },
+        "userStatus": {
+          "type": "integer",
+          "description": "User Status",
+          "format": "int32",
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name userStatus valid case: in parameter value range minimum -2147483648 (include) and maximum 2147483647 (include)",
+              "testdata": [
+                "None",
+                -2147483648,
+                2147483647,
+                -2147483647,
+                2147483646,
+                -1196503517
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name userStatus invalid case: out of parameter valid range more than maximum (not include) 2147483647 or small than minimum (include) -2147483648",
+              "testdata": [
+                -2147483649,
+                2147483648
+              ]
+            }
+          }
+        },
+        "username": {
+          "type": "string",
+          "testcases": {
+            "valid_partition": {
+              "testcase": "Parameter name username valid case: in string length range minimum 1 (include) and maximum 20 (include)",
+              "testdata": [
+                "None",
+                "A",
+                "mrXjBctPfJeDwNKnWIMz",
+                "QGrwzhaI.W",
+                "BqTt",
+                "bQtT"
+              ]
+            },
+            "invalid_partition": {
+              "testcase": "Parameter name username invalid case: out of string valid length range: shorter than minimum 1 or longer than maximum 20",
+              "testdata": [
+                "",
+                "tXcZTkKShPHFmdgyAUMer",
+                "4-{63(%;+[!*,<7",
+                "\u516d\u4e09"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
