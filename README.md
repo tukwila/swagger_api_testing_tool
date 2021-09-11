@@ -1,5 +1,3 @@
-# swagger_api_testing_tool
-Config files for my GitHub profile.
 工具功能
 1. 根据swagger api版本(分2.0、3.0版本)解析api定义，梳理每一个api的如下信息：
 a. path作为testsuite，
