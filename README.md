@@ -13,3 +13,4 @@ c. 其他属性；deprecated
 5. 基于测试用例和测试数据生成自动化测试用例脚本
 6. 执行自动化测试用例脚本
 7. 保存执行结果，生成测试报告
+for detail definitions: https://my.oschina.net/tukwila/blog/5257155
